@@ -18,6 +18,10 @@ export default <Partial<Config>>{
           950: "#052e16",
         },
       },
+      fontFamily: {
+        main: ["Bebas Neue", "sans-serif"],
+       
+      },
     },
   },
 };

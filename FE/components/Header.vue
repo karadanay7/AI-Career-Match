@@ -1,10 +1,10 @@
 <template>
     <UContainer
-      class="w-full flex items-center justify-between border-b border-gray-200 dark:border-gray-600"
+      class="w-full flex items-center justify-between border-b  border-primary dark:border-primary"
     >
       <div>
         <ULink to="/">
-         <h1>AI Career Match</h1>
+         <h1>AICareerMatch</h1>
         </ULink>
       </div>
       <div class="py-2">
