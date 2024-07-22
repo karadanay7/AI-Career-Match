@@ -1,6 +1,6 @@
 <template>
-    <UContainer
-      class="w-full flex items-center justify-between border-b  border-primary dark:border-primary"
+    <div
+      class="w-full flex items-center justify-between border-b  border-primary dark:border-primary  mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl bg-white dark:bg-gray-900"
     >
       <div>
         <ULink to="/">
@@ -8,7 +8,7 @@
         </ULink>
       </div>
       <div class="py-2">
-        <UButton @click="toggleMenu()" class="md:hidden">
+        <UButton @click="toggleMenu()" class="lg:hidden">
           <Icon
             :name="isMenuOpen ? 'pajamas:close' : 'pajamas:hamburger'"
             class="w-4 h-4 text-gray-300 dark:text-gray-900"
@@ -16,13 +16,13 @@
         </UButton>
       </div>
   
-      <div class="hidden md:flex">
+      <div class="hidden lg:flex">
         <UHorizontalNavigation :links="horizontalLinks" />
       </div>
   
       <div
         v-if="isMenuOpen"
-        class="flex flex-col md:hidden top-11 absolute z-10 mx-auto left-0 right-0 border rounded-lg text-start bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-600 justify-center py-2 items-center"
+        class="flex flex-col lg:hidden top-11 absolute z-10 mx-auto left-0 right-0 border rounded-lg text-start border-gray-300 dark:border-gray-600 justify-center py-2 items-center  bg-transparent"
       >
         <div class="absolute top-0 w-full flex justify-end items-center">
           <NuxtLink
@@ -55,25 +55,26 @@
       </div>
   
       <div class="flex items-center justify-center gap-2">
-        <ULink
+        <UButton
+        
           v-if="!user"
           @click="navigateAuth"
-          class="w-24 hidden md:flex items-center justify-center gap-1 text-sm hover:text-primary"
-          size="xs"
-          ><UIcon
-            name="i-heroicons-arrow-right-end-on-rectangle-20-solid"
-          />Login</ULink
+          class=" hidden lg:flex "
+          size="sm"
+          icon="i-heroicons-arrow-right-end-on-rectangle-20-solid"
+          >Login</UButton
         >
   
-        <ULink
-          class="hidden md:flex w-24 items-center justify-center gap-1 text-sm hover:text-primary"
+        <UButton
+          class="hidden lg:flex w-24 "
           v-else
           @click="signOut()"
-          size="xs"
+          size="sm"
+           icon="i-heroicons-arrow-right-end-on-rectangle-20-solid"
         >
-          <Icon name="i-heroicons-arrow-right-start-on-rectangle-20-solid" />
+          
           Sign out
-        </ULink>
+        </UButton>
         <UToggle
           v-model="isDark"
           on-icon="i-heroicons-moon"
@@ -81,7 +82,7 @@
           size="lg"
         />
       </div>
-    </UContainer>
+    </div>
    
   </template>
   <script setup lang="ts">

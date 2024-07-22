@@ -20,6 +20,7 @@ export default <Partial<Config>>{
       },
       fontFamily: {
         main: ["Bebas Neue", "sans-serif"],
+        mont: ["Montserrat", "sans-serif"],
        
       },
     },
