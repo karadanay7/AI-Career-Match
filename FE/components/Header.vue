@@ -73,7 +73,7 @@
            icon="i-heroicons-arrow-right-end-on-rectangle-20-solid"
         >
           
-          Sign out
+          Logout
         </UButton>
         <UToggle
           v-model="isDark"
@@ -86,7 +86,8 @@
    
   </template>
   <script setup lang="ts">
-
+  const supabase = useSupabaseClient();
+const user = useSupabaseUser();
   const isMenuOpen = ref(false);
   const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value);
   
