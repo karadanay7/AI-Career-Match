@@ -83,7 +83,7 @@
             <div class="flex justify-between p-6">
                 <UButton v-if="step > 1" @click="prevStep" type="button" size="sm">Previous</UButton>
                 <UButton v-if="step < 3" :class="{'ml-auto': step === 1}" @click="nextStep" type="button" size="sm">Next</UButton>
-                <UButton v-if="step === 3" @click="submitForm" type="button" size="sm">Submit</UButton>
+                <UButton v-if="step === 3" @click="submitForm" type="button" size="sm" color="green">Submit</UButton>
             </div>
             <div v-if="err" class="text-red-500 text-center text-xs">{{ err }}</div>
         </UCard>
