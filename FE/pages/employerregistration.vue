@@ -32,15 +32,14 @@
                             <UInput v-model="form.companyDescription" type="text" id="companyDescription" />
                         </UFormGroup>
                         <UFormGroup label="Company Logo" name="companyLogo">
-                            <div class="flex  items-center gap-4">
-                                <div
-                                    class=" h-32 w-32  border-2 border-dashed flex  justify-center items-center overflow-hidden mt-4">
-                                    <div v-if="previewSrc">
-                                        <div class="w-full h-full flex justify-center items-center">
-                                            <img :src="previewSrc" alt="Image Preview" class="object-cover" />
-                                        </div>
-                                        <div>
-
+                            <div class="flex items-center gap-4">
+                                <div class="relative h-32 w-32 border-2 border-dashed flex justify-center items-center overflow-hidden mt-4">
+                                    <div v-if="previewSrc" class="w-full h-full">
+                                        <div class="relative w-full h-full flex justify-center items-center">
+                                            <img :src="previewSrc" alt="Image Preview" class="object-cover w-full h-full" />
+                                            <button @click="handleFileChange" class="absolute top-0 right-0 text-red-500 font-extrabold bg-white rounded-full h-5 w-5  ">
+                                                <UIcon name="i-heroicons-x-mark-16-solid" />
+                                            </button>
                                         </div>
                                     </div>
                                     <div v-else class="flex flex-col justify-center items-center w-full h-full p-2">
@@ -51,20 +50,12 @@
                                             Drop or
                                             <span class="text-blue-500 cursor-pointer"> browse </span>
                                         </h2>
-
                                         <input type="file" accept="image/*" @change="previewImage"
-                                            class="opacity-0 cursor-pointer absolute inset-0 w-full h-full object-contain"
+                                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                                             ref="previewFileInput" required />
                                     </div>
-
-                                </div>
-                                <div v-if="previewSrc" class="self-end">
-                                    <UButton @click="handleFileChange" icon="i-heroicons-x-mark-16-solid" color="red" />
                                 </div>
                             </div>
-
-
-
                         </UFormGroup>
 
                         <div>
@@ -96,9 +87,8 @@
         </UCard>
     </div>
 </template>
+
 <script setup lang="ts">
-
-
 const err = ref('');
 const previewUrl = ref<string | null>(null);
 
@@ -120,7 +110,6 @@ const previewImage = (evt: { target: { files: FileList } }) => {
             previewSrc.value = reader.result;
         };
         reader.readAsDataURL(file);
-        files.value = evt.target.files; // Assign files.value here
     }
 };
 const handleFileChange = () => {
