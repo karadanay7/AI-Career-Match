@@ -6,9 +6,9 @@
         }">
             <template #header>
                 <div class="flex items-center justify-center relative">
-                    <ULink @click="pushHome" class="absolute left-0 top-1">
+                    <NuxtLink to="/" class="absolute left-0 top-1">
                         <UIcon name="i-heroicons-arrow-left" size="32" class="md:mt-1" />
-                    </ULink>
+                    </NuxtLink>
                     <h1 class="text-lg md:text-2xl">Complete Profile</h1>
                 </div>
             </template>
