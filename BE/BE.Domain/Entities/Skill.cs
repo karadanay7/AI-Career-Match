@@ -15,6 +15,11 @@ namespace BE.Domain.Entities
         public Employee Employee { get; set; }
         public string Name { get; set; }
         public ProficiencyLevel Proficiency { get; set; } 
+
+
+
+
+
         
     }
 }
