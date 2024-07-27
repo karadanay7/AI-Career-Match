@@ -81,7 +81,7 @@
                 </div>
             </UForm>
             <div class="flex justify-center p-6">
-                <UButton @click="submitForm" type="button" size="sm" color="green">Submit</UButton>
+                <UButton @click="submitForm" type="button" size="sm" color="green">Register</UButton>
             </div>
             <div v-if="err" class="text-red-500 text-center text-xs">{{ err }}</div>
         </UCard>
