@@ -10,6 +10,8 @@ namespace BE.Domain.Entities
 {
     public class Education: EntityBase<Guid>
     {
+        public Guid EmployeeId { get; set; }
+        public Employee Employee { get; set; }
         public string Institution { get; set; }
         public DegreeType Degree { get; set; }
         public string FieldOfStudy { get; set; }

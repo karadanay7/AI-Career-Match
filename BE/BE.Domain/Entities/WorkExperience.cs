@@ -1,4 +1,5 @@
 ﻿using BE.Domain.Common;
+using BE.Domain.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace BE.Domain.Entities
 {
     public class WorkExperience: EntityBase<Guid>
     {
+        
+        public Guid EmployeeId { get; set; }
+        public Employee Employee { get; set; }
         public string CompanyName { get; set; }
         public string JobTitle { get; set; }
         public DateTimeOffset StartDate { get; set; }

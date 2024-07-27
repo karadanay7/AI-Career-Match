@@ -9,6 +9,8 @@ namespace BE.Domain.Entities
 {
     public class Address:EntityBase<Guid>
     {
+        public Guid EmployeeId { get; set; }
+        public Employee Employee { get; set; }
         public string? Street { get; set; }
         public string? City { get; set; }
         public string? State { get; set; }

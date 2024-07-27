@@ -9,10 +9,12 @@ namespace BE.Domain.Entities
 {
     public class Reference:EntityBase<Guid>
     {
+        public Guid EmployeeId { get; set; }
+        public Employee Employee { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
+        public string? Phone { get; set; }
+        public string? Email { get; set; }
         public string Relationship { get; set; }
 
     }

@@ -10,7 +10,11 @@ namespace BE.Domain.Entities
 {
     public class Skill:EntityBase<Guid>
     {
+        
+        public Guid EmployeeId { get; set; }
+        public Employee Employee { get; set; }
         public string Name { get; set; }
         public ProficiencyLevel Proficiency { get; set; } 
+        
     }
 }
