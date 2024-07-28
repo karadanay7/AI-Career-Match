@@ -35,6 +35,8 @@
             <div class="grid grid-cols-1 gap-4">
               <UFormGroup label="Title" name="title">
                 <UInput v-model="form.title" id="title" placeholder="e.g., Frontend Developer" />
+              </UFormGroup>  <UFormGroup label="Summary" name="summary">
+                <UInput v-model="form.summary" id="summary" placeholder="Write about yourself" />
               </UFormGroup>
               <UFormGroup label="Skills" name="skills">
                 <UInput v-model="form.skills" id="skills" placeholder="Enter your skills" />
@@ -179,6 +181,7 @@
     lastName: '',
     phoneNumber: '',
     title: '',
+    summary: '',
     skills: '',
     workExperience: 0,
     address: '',
