@@ -23,6 +23,9 @@
               <UFormGroup label="Phone Number" name="phoneNumber">
                 <UInput v-model="form.phoneNumber" id="phoneNumber" />
               </UFormGroup>
+              <UFormGroup label="Your Location" name="address">
+                <UInput v-model="form.address" id="address" />
+              </UFormGroup>
             </div>
           </div>
   
@@ -35,6 +38,12 @@
               </UFormGroup>
               <UFormGroup label="Skills" name="skills">
                 <UInput v-model="form.skills" id="skills" placeholder="Enter your skills" />
+              </UFormGroup>
+              <UFormGroup label="Languages" name="languages">
+                <UInput v-model="form.languages" id="languages" placeholder="Ex: Spanish, English" />
+              </UFormGroup>
+              <UFormGroup label="Work Experience" name="workExperience">
+                <UInput v-model="form.workExperience" type="number" id="workExperience" placeholder="Ex: 2 years" />
               </UFormGroup>
   
               <!-- Education Section -->
@@ -76,7 +85,7 @@
                 <UFormGroup label="Company" :name="'company-' + index">
                   <UInput v-model="experience.company" :id="'company-' + index" placeholder="Ex: Tesla" />
                 </UFormGroup>
-                <UFormGroup label="Title" :name="'title-' + index">
+                <UFormGroup label="Job Title" :name="'title-' + index">
                   <UInput v-model="experience.title" :id="'title-' + index" placeholder="Ex: Senior Software Engineer" />
                 </UFormGroup>
                 <UFormGroup label="Start Date" :name="'expStartDate-' + index">
@@ -85,8 +94,8 @@
                 <UFormGroup label="End Date" :name="'expEndDate-' + index">
                   <UInput v-model="experience.endDate" :id="'expEndDate-' + index" type="date" />
                 </UFormGroup>
-                <UFormGroup label="Description" :name="'expDescription-' + index">
-                  <UInput v-model="experience.description" :id="'expDescription-' + index" placeholder="Enter description" />
+                <UFormGroup label="Responsibilities" :name="'expDescription-' + index">
+                  <UInput v-model="experience.responsibilities" :id="'expDescription-' + index" placeholder="Enter description" />
                 </UFormGroup>
               </div>
   
@@ -95,28 +104,7 @@
               </div>
   
               <UFormGroup label="Resume" name="resume">
-                <div class="flex items-center gap-4">
-                  <div class="relative h-32 w-32 border-2 border-dashed flex justify-center items-center overflow-hidden mt-4">
-                    <div v-if="previewSrc" class="w-full h-full">
-                      <div class="relative w-full h-full flex justify-center items-center">
-                        <img :src="previewSrc" alt="Image Preview" class="object-cover w-full h-full" />
-                        <button @click="resetPreviewImage" class="absolute top-0 right-0 text-red-500 font-extrabold bg-white rounded-full h-5 w-5">
-                          <UIcon name="i-heroicons-x-mark-16-solid" />
-                        </button>
-                      </div>
-                    </div>
-                    <div v-else class="flex flex-col justify-center items-center w-full h-full p-2">
-                      <div>
-                        <Icon class="text-primary" name="flat-color-icons:add-image" size="50" />
-                      </div>
-                      <h2 class="text-center text-lg mb-2">
-                        Drop or
-                        <span class="text-blue-500 cursor-pointer"> browse </span>
-                      </h2>
-                      <input type="file" accept="image/*" @change="previewImage" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" ref="previewFileInput" />
-                    </div>
-                  </div>
-                </div>
+                <UInput v-model="form.resume" type="file"  ref="previewFileInput" />
               </UFormGroup>
   
               <div>
@@ -192,6 +180,9 @@
     phoneNumber: '',
     title: '',
     skills: '',
+    workExperience: 0,
+    address: '',
+    languages: '',
     education: [
       {
         institution: '',
@@ -209,7 +200,7 @@
         title: '',
         startDate: '',
         endDate: '',
-        description: ''
+        responsibilities: ''
       }
     ],
     resume: '',
@@ -273,26 +264,6 @@
   const submitForm = () => {
     // Add form submission logic here
     console.log('Form submitted:', form.value)
-  }
-  
-  const previewSrc = ref(null)
-  
-  const previewFileInput = ref(null)
-  
-  const previewImage = (event) => {
-    const file = event.target.files[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onload = (e) => {
-        previewSrc.value = e.target.result
-      }
-      reader.readAsDataURL(file)
-    }
-  }
-  
-  const resetPreviewImage = () => {
-    previewSrc.value = null
-    previewFileInput.value.value = ''
   }
   
  
