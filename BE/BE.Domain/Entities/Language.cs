@@ -11,7 +11,7 @@ namespace BE.Domain.Entities
     {
         public Guid EmployeeId { get; set; }
         public Employee Employee { get; set; }
-        public string Name { get; set; } //enum yapılabilir 
+        public BE.Domain.Enums.Language Name { get; set; } 
         public LanguageProficiencyLevel Proficiency {  get; set; } 
     }
 }
