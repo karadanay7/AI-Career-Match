@@ -23,6 +23,8 @@ namespace BE.Domain.Entities
         public List<string> SocialMediaUrl { get; set; }
         public List<Reference>? References { get; set; }
         public Address? Address { get; set; }
+        public int? TotalExperienceTime { get; set; }
+        public List<Application>? Applications { get; set; }
 
 
         public Employee()
