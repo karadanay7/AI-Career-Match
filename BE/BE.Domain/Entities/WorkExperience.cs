@@ -16,7 +16,8 @@ namespace BE.Domain.Entities
         public string CompanyName { get; set; }
         public string JobTitle { get; set; }
         public DateTimeOffset StartDate { get; set; }
-        public DateTimeOffset EndDate { get; set; }
-        public string Responsibilities { get; set; }
+        public DateTimeOffset? EndDate { get; set; }
+        public string? Responsibilities { get; set; }
+       
     }
 }
