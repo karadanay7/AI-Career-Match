@@ -130,14 +130,9 @@
             <h2 class="text-xl mb-4">Career Preferences</h2>
             <div class="grid grid-cols-1 gap-4">
               <UFormGroup label="Preferred Job Type" name="preferredJobType">
-                <USelect v-model="form.preferredJobType" id="preferredJobType">
-                  <option value="">Select Job Type</option>
-                  <option value="full-time">Full-time</option>
-                  <option value="part-time">Part-time</option>
-                  <option value="contract">Contract</option>
-                  <option value="internship">Internship</option>
-                  <option value="freelance">Freelance</option>
-                </USelect>
+                
+                    <USelect v-model="form.preferredJobType" :options="jobTypes" />
+               
               </UFormGroup>
               <UFormGroup label="Preferred Job Location" name="preferredJobLocation">
                 <USelect v-model="form.preferredJobLocation" id="preferredJobLocation">
@@ -175,7 +170,7 @@
  
   
   const step = ref(1)
-  
+  const jobTypes = ['Full-time', 'Part-time', 'Freelance', 'Contract', 'Hybrid', 'Remote']
   const form = ref({
     firstName: '',
     lastName: '',
