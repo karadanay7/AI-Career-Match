@@ -14,8 +14,11 @@ namespace BE.Domain.Entities
         public Company Company { get; set; }
         public string? Title { get; set; }
         public string? Department { get; set; }
-    
-      
+
+        public Employer()
+        {
+            UserType = UserType.Employer;
+        }
 
 
     }

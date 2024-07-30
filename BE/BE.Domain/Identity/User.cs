@@ -14,10 +14,11 @@ namespace BE.Domain.Identity
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? ProfileImage { get; set; }
+        public UserType UserType { get; set; }
         public DateTimeOffset CreateOn { get; set ; }
         public string CreatedByUserId { get; set; }
         public DateTimeOffset? ModifiedOn { get; set; }
         public string? ModifiedByUserId { get; set; }
-        public UserType UserType { get; set; }
+       
     }
 }
