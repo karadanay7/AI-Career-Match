@@ -8,7 +8,7 @@ namespace BE.Domain.Common
 {
     public interface  ICreatedByEntity
     {
-        DateTimeOffset CreateOn { get; set; }
+        DateTimeOffset CreatedOn { get; set; }
         string CreatedByUserId { get; set; }
     }
 }
