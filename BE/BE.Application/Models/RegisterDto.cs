@@ -9,5 +9,6 @@ namespace BE.Application.Models
     public class RegisterDto
     {
         public Guid UserId { get; set; }
+        public JwtDto JwtDto { get; set; }
     }
 }
