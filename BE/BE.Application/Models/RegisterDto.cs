@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE.Application.Features.UserAuth.Commands.UserRegister
+namespace BE.Application.Models
 {
-    public class UserRegisterCommand
+    public class RegisterDto
     {
+        public Guid UserId { get; set; }
     }
 }
