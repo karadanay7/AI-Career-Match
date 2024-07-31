@@ -1,22 +1,29 @@
 <template>
-    <div class="h-full w-full ">
+    <div class="h-full w-full font-index">
       <div class="JobList container mx-auto flex flex-col gap-1 md:gap-5">
-        <div v-for="(category, i) in jobCategories" :key="i">
+        <div v-for="category in categoryList" :key="category">
           <UBadge size="xl" :ui="{ rounded: 'rounded-lg' }" class="ml-2">{{ category }}</UBadge>
   
           <ul class="flex items-stretch gap-4 overflow-x-auto max-w-full py-3">
-            <li v-for="job in jobListings" :key="job.id" class="JobBox p-2 rounded-lg">
+            <li v-for="job in jobList" :key="job.id" class="JobBox p-2 rounded-lg">
               <Job
-                :jobTitle="job.title"
-                :companyLogoUrl="job.company.logoUrl"
-                :companyName="job.company.name"
-                :employerName="job.employer.name"
+                :title="job.title"
+                :description="job.description"
+                :workStyle="job.workStyle"
                 :minSalary="job.minSalary"
                 :maxSalary="job.maxSalary"
-                :workStyle="job.workStyle"
                 :requiredSkills="job.requiredSkills"
+                :requiredExperienceTime="job.requiredExperienceTime"
+                :requiredEducationLevel="job.requiredEducationLevel"
+                :responsibilities="job.responsibilities"
+                :qualifications="job.qualifications"
+                :specificBenefits="job.specificBenefits"
                 :applicationDeadline="job.applicationDeadline"
                 :postedDate="job.postedDate"
+                :requiredLanguages="job.requiredLanguages"
+                :interviewProcess="job.interviewProcess"
+                :travelRequirement="job.travelRequirement"
+                :company="job.company"
               />
             </li>
           </ul>
@@ -25,44 +32,33 @@
     </div>
   </template>
   
-  <script setup lang="ts">
-  const jobCategories = ["Engineering", "Design", "Marketing", "Sales", "HR"];
-  const jobListings = [
+  <script setup>
+  const categoryList = ["Engineering", "Marketing", "Sales", "Design", "Operations"];
+  const jobList = [
     {
       id: 1,
-      title: "Frontend Developer",
+      title: "Software Engineer",
+      description: "Develop and maintain web applications.",
+      workStyle: "Remote",
+      minSalary: 70000,
+      maxSalary: 100000,
+      requiredSkills: ["JavaScript", "Vue.js", "Node.js"],
+      requiredExperienceTime: 3,
+      requiredEducationLevel: "Bachelor's Degree",
+      responsibilities: "Write clean, maintainable code.",
+      qualifications: "3+ years of experience in web development.",
+      specificBenefits: ["Health insurance", "Stock options"],
+      applicationDeadline: "2024-12-31",
+      postedDate: "2024-07-30",
+      requiredLanguages: ["English"],
+      interviewProcess: "Phone interview, Technical interview, HR interview",
+      travelRequirement: false,
       company: {
         name: "TechCorp",
-        logoUrl: "https://example.com/company-logo1.png",
-      },
-      employer: {
-        name: "Jane Doe",
-      },
-      minSalary: 60000,
-      maxSalary: 80000,
-      workStyle: "Remote",
-      requiredSkills: ["JavaScript", "Vue.js", "CSS"],
-      applicationDeadline: "2024-08-15",
-      postedDate: "2024-07-25",
+        logoUrl: "/images/companylogo.png"
+      }
     },
-    {
-      id: 2,
-      title: "UI/UX Designer",
-      company: {
-        name: "DesignHub",
-        logoUrl: "https://example.com/company-logo2.png",
-      },
-      employer: {
-        name: "John Smith",
-      },
-      minSalary: 50000,
-      maxSalary: 70000,
-      workStyle: "On-site",
-      requiredSkills: ["Figma", "Adobe XD", "Sketch"],
-      applicationDeadline: "2024-08-20",
-      postedDate: "2024-07-28",
-    },
-    // Add more job listings as needed
+    // Add more job data as needed
   ];
   </script>
   
