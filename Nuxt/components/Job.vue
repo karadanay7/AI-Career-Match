@@ -43,7 +43,7 @@
             </p>
             <div class="flex justify-between pt-4">
         <UButton @click="saveJob">Save</UButton>
-        <UButton @click="applyJob" >Apply</UButton>
+        <UButton @click="goToApplyPage" >Apply</UButton>
       </div>
 
 
@@ -75,7 +75,8 @@ const props = defineProps([
 
 const router = useRouter();
 
-const applyJob = () => {
+
+const GoToApplyPage = () => {
     router.push(`/jobs/${props.id}`);
 };
 </script>
