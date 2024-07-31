@@ -52,7 +52,8 @@
 </template>
 
 <script setup>
-defineProps([
+const props = defineProps([
+    "id",
     "title",
     "description",
     "workStyle",
@@ -72,16 +73,9 @@ defineProps([
     "company"
 ]);
 
-
 const router = useRouter();
 
-function saveJob() {
-  // Implement the save functionality
-  alert('Job saved!');
-}
-
-function applyJob() {
-  // Implement the navigation to another page
-  router.push({ name: 'JobApply', params: { jobId: props.title } });
-}
+const applyJob = () => {
+    router.push(`/jobs/${props.id}`);
+};
 </script>
