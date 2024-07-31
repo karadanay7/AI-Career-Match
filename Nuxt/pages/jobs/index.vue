@@ -7,6 +7,7 @@
           <ul class="flex items-stretch gap-4 overflow-x-auto max-w-full py-3">
             <li v-for="job in jobList" :key="job.id" class="JobBox p-2 rounded-lg">
               <Job
+                :id="job.id"
                 :title="job.title"
                 :description="job.description"
                 :workStyle="job.workStyle"
@@ -32,7 +33,7 @@
     </div>
   </template>
   
-  <script setup>
+  <script setup lang="ts">
   const categoryList = ["Engineering", "Marketing", "Sales", "Design", "Operations"];
   const jobList = [
     {

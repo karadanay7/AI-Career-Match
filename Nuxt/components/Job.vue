@@ -75,6 +75,7 @@ const props = defineProps([
 
 const router = useRouter();
 
+
 const applyJob = () => {
     router.push(`/jobs/${props.id}`);
 };
