@@ -8,6 +8,7 @@
             <li v-for="job in jobList" :key="job.id" class="JobBox p-2 rounded-lg">
               <Job
                 :id="job.id"
+                :companyName="job.company.name"
                 :title="job.title"
                 :description="job.description"
                 :workStyle="job.workStyle"
