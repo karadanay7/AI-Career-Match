@@ -25,8 +25,10 @@ namespace BE.Application.Features.UserAuth.Commands.UserRegister
 
             return new User()
             {
+                Id = id,
                 FirstName= command.FirstName,
                 LastName= command.LastName,
+                UserName=command.FirstName+command.LastName,
                 Email= command.Email,
                 CreatedOn = DateTimeOffset.UtcNow,
                 CreatedByUserId = id.ToString(),
