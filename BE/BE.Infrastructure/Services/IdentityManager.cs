@@ -42,7 +42,11 @@ namespace BE.Infrastructure.Services
 
             if (!result.Succeeded)
             {
-                throw new Exception("User registration failed");
+                //throw new Exception("User registration failed");
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                // Loglama yapılabilir, örneğin: 
+                Console.WriteLine($"User registration failed: {errors}");
+                throw new Exception($"User registration failed: {errors}");
             }
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
