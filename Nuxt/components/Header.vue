@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full flex items-center justify-between border-b border-primary dark:border-primary mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl bg-slate-100 dark:bg-gray-900"
+    class="w-full flex items-center justify-between  mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl bg-slate-100 dark:bg-gray-900"
   >
     <div>
       <ULink to="/">

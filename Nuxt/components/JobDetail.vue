@@ -1,5 +1,5 @@
 <template>
-  <div v-if="job" class="p-6 rounded-lg shadow-lg border border-primary">
+     <div v-if="job" class="p-6 rounded-lg shadow-lg border border-primary">
     <h1 class="text-3xl font-bold mb-4">{{ job.title }}</h1>
     <p class="mb-2" v-if="job.company && job.company.name"><strong>Company:</strong> {{ job.company.name }}</p>
     <p class="mb-4"><strong>Description:</strong> {{ job.description }}</p>
@@ -17,19 +17,21 @@
   <div v-else>
     <p>Select a job to see details</p>
   </div>
-</template>
 
-<script setup lang="ts">
+  </template>
+  
+  <script setup lang="ts">
 
-
-const props = defineProps({
-  job: {
-    type: Object,
-    default: null,
-  },
-});
-</script>
-
-<style scoped>
-/* Add custom styles if needed */
-</style>
+  
+  const props = defineProps({
+    job: {
+      type: Object,
+      default: null,
+    },
+  });
+  </script>
+  
+  <style scoped>
+  /* Add custom styles if needed */
+  </style>
+  
