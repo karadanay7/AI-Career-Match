@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Resend;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,17 @@ namespace BE.Infrastructure
 
             services.AddScoped<IJwtService, JwtManager>();
             services.AddScoped<IIdentityService, IdentityManager>();
+            services.AddScoped<IEmailService, ResendEmailManager>();
+
+            services.AddOptions();
+            services.AddHttpClient<ResendClient>();
+            services.Configure<ResendClientOptions>(o =>
+            {
+                o.ApiToken = configuration.GetSection("ReSendApiKey").Value!;
+            });
+
+            services.AddTransient<IResend, ResendClient>();
+
 
             return services;
         }
