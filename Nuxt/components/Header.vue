@@ -28,7 +28,7 @@
 
     <div
       v-if="isMenuOpen"
-      class="flex flex-col lg:hidden top-11 absolute z-20 mx-auto left-0 right-0 border rounded-lg text-start border-gray-300 dark:border-gray-600 justify-center py-2 items-center bg-gray-900"
+      class="flex flex-col lg:hidden top-11 absolute z-20 mx-auto left-0 right-0 border rounded-lg text-start border-gray-300 dark:border-gray-600 justify-center py-2 items-center bg-slate-100 dark:bg-gray-900"
     >
       <div class="absolute top-0 w-full flex justify-end items-center">
         <NuxtLink
@@ -142,7 +142,7 @@ const user = useSupabaseUser();
       {
         label: "For Employers",
         icon: "i-heroicons-bolt",
-        to: "/employers",
+        to: "/foremployers",
       },
     ],
   ];
@@ -172,7 +172,7 @@ const user = useSupabaseUser();
       {
         label: "For Employers",
         icon: "i-heroicons-bolt",
-        to: "/employers",
+        to: "/foremployers",
       },
     ],
   ];

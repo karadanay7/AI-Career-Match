@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="min-h-screen">
  For employers page
     </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-screen">
- Community page
+Companies page
     </div>
 </template>
 

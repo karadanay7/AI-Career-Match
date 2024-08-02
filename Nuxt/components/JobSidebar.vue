@@ -1,42 +1,37 @@
 <template>
-    <aside class="w-1/4 bg-slate-100 dark:bg-gray-900 p-4 shadow-lg">
-      <h2 class="text-xl font-semibold mb-4">Similar Jobs</h2>
-      <ul>
+    <div class="w-1/4 p-4 border-r border-gray-200">
+      <ul class="space-y-4">
         <li
-          v-for="similarJob in similarJobs"
-          :key="similarJob.id"
-          class="mb-4 p-2 border rounded cursor-pointer "
-          @click="navigateToJob(similarJob.id)"
+          v-for="job in jobs"
+          :key="job.id"
+          class="cursor-pointer p-4 border rounded-lg bg-slate-100 dark:bg-gray-800 hover:dark:bg-gray-700 hover:bg-slate-300" 
+          @click="selectJob(job)"
         >
-          <h3 class="font-semibold">{{ similarJob.title }}</h3>
-          <p class="text-sm text-gray-400">{{ similarJob.company.name }}</p>
+          <h2 class="font-bold">{{ job.title }}</h2>
+          <p>{{ job.company.name }}</p>
+          <p>{{ job.workStyle }}</p>
+          <p>{{ job.requiredExperienceTime }} years experience</p>
+          <p>{{ job.requiredLanguages.join(', ') }}</p>
         </li>
       </ul>
-    </aside>
+    </div>
   </template>
   
   <script setup lang="ts">
-
-
-  const similarJobs = ref([
-    {
-      id: 2,
-      title: 'Frontend Developer',
-      company: { name: 'Web Solutions' }
+ 
+  
+  const props = defineProps({
+    jobs: {
+      type: Array,
+      required: true,
     },
-    {
-      id: 3,
-      title: 'Backend Developer',
-      company: { name: 'DataCorp' }
-    }
-    // Add more similar jobs here
-  ]);
+  });
   
-  const router = useRouter();
+  const emits = defineEmits(['selectJob']);
   
-  function navigateToJob(id) {
-    router.push(`/jobs/${id}`);
-  }
+  const selectJob = (job) => {
+    emits('selectJob', job);
+  };
   </script>
   
   <style scoped>
