@@ -16,6 +16,7 @@ export default defineAppConfig({
           xl: "text-lg px-5 py-1.5",
         },
       },
+    
       modal: {
         container: "flex min-h-full items-center justify-center text-center",
       },
