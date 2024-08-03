@@ -1,8 +1,10 @@
 <template>
       <NuxtLayout :name="layout">
-    <div v-if="job">
-      <h1 class="text-2xl font-bold mb-4">{{ job.title }}</h1>
-      <UContainer class="p-4  rounded-lg shadow-md">
+        <UContainer>
+            <div v-if="job">
+  
+      <div class="p-4  rounded-lg shadow-2xl ">
+        <h1 class="text-2xl font-bold mb-4">{{ job.title }}</h1>
         <p><strong>Company:</strong> {{ job.company.name }}</p>
         <p><strong>Description:</strong> {{ job.description }}</p>
         <p><strong>Work Style:</strong> {{ job.workStyle }}</p>
@@ -11,11 +13,13 @@
         <p><strong>Education Level:</strong> {{ job.requiredEducationLevel }}</p>
         <p><strong>Languages Required:</strong> {{ job.requiredLanguages.join(', ') }}</p>
         <p><strong>Application Deadline:</strong> {{ new Date(job.applicationDeadline).toLocaleDateString() }}</p>
-      </UContainer>
+      </div>
     </div>
     <div v-else>
       <p>Loading job details...</p>
     </div>
+        </UContainer>
+ 
 </NuxtLayout>
   </template>
   
