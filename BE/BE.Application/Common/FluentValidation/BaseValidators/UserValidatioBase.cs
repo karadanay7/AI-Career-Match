@@ -1,4 +1,4 @@
-﻿using BE.Application.Interfaces;
+﻿using BE.Application.Common.Interfaces;
 using FluentValidation;
 using System;
 using System.Collections.Generic;

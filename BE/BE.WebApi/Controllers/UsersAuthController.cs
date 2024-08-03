@@ -21,5 +21,7 @@ namespace BE.WebApi.Controllers
         {
             return Ok(await _mediatr.Send(command, cancellationToken));
         }
-    }
+
+        
+    }  
 }

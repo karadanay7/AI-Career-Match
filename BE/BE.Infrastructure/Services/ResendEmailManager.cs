@@ -1,5 +1,5 @@
-﻿using BE.Application.Interfaces;
-using BE.Application.Models.EmailDtos;
+﻿using BE.Application.Common.Interfaces;
+using BE.Application.Common.Models.EmailDtos;
 using Resend;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using BE.Application.Models;
+﻿using BE.Application.Common.Models;
 using BE.Domain.Enums;
 using BE.Domain.Identity;
 using MediatR;
