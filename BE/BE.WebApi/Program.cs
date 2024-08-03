@@ -1,5 +1,7 @@
 using BE.Infrastructure;
 using BE.Application;
+using BE.Application.Common.Interfaces;
+using BE.WebApi.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,7 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
-
+builder.Services.AddSingleton<IRootPathService>(new RootPathManager(builder.Environment.WebRootPath));
 
 var app = builder.Build();
 

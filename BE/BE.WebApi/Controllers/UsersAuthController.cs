@@ -1,4 +1,5 @@
 ﻿using BE.Application.Features.UserAuth.Commands.UserRegister;
+using BE.Application.Features.UserAuth.Commands.UserVerifyEmail;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,5 +22,13 @@ namespace BE.WebApi.Controllers
         {
             return Ok(await _mediatr.Send(command, cancellationToken));
         }
-    }
+
+        [HttpGet("verify-email")]
+
+        public async Task<IActionResult> VerifyEmailAsync([FromQuery] UserVerifyEmailCommand command, CancellationToken cancellationToken)
+        {
+
+            return Ok(await _mediatr.Send(command, cancellationToken));
+        }
+    }  
 }

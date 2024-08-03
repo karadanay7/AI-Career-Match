@@ -1,6 +1,7 @@
-﻿using BE.Application.Features.UserAuth.Commands.UserRegister;
-using BE.Application.Interfaces;
-using BE.Application.Models;
+﻿using BE.Application.Common.Interfaces;
+using BE.Application.Common.Models;
+using BE.Application.Features.UserAuth.Commands.UserRegister;
+using BE.Application.Features.UserAuth.Commands.UserVerifyEmail;
 using BE.Domain.Identity;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -53,6 +54,20 @@ namespace BE.Infrastructure.Services
             return new UserEmployeeRegisterResponseDto(user.Id, user.Email, user.FirstName, token);
 
 
+        }
+
+        public async Task<bool> VerifyEmailAsync(UserVerifyEmailCommand command, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.FindByEmailAsync(command.Email);
+
+            var result = await _userManager.ConfirmEmailAsync(user, command.Token);
+
+            if (!result.Succeeded)
+            {
+                throw new Exception("User's email verification failed");
+            }
+
+            return true;
         }
     }
 }

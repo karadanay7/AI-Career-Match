@@ -1,5 +1,5 @@
-﻿using BE.Application.Interfaces;
-using BE.Application.Models;
+﻿using BE.Application.Common.Interfaces;
+using BE.Application.Common.Models;
 using BE.Domain.Identity;
 using BE.Domain.Settings;
 using Microsoft.Extensions.Options;

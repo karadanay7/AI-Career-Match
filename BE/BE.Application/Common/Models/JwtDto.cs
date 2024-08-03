@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE.Application.Models
+namespace BE.Application.Common.Models
 {
     public class JwtDto
     {

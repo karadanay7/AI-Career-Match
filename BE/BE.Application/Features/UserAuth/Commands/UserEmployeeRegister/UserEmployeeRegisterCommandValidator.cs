@@ -1,6 +1,6 @@
 ﻿using BE.Application.Common.FluentValidation.BaseValidators;
+using BE.Application.Common.Interfaces;
 using BE.Application.Features.UserAuth.Commands.UserRegister;
-using BE.Application.Interfaces;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
