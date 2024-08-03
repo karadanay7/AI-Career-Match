@@ -1,5 +1,5 @@
 <template>
-    <div class="w-[400px] p-4 border-r border-gray-200">
+    <div class="w-[400px] p-4 border border-gray-200 rounded-md min-h-screen">
       <!-- Job Categories Section -->
       <section class="mb-6">
         <h2 class="text-xl font-semibold mb-4">Job Categories</h2>
