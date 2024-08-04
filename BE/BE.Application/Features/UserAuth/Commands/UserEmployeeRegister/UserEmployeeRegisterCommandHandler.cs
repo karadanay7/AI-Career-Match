@@ -1,8 +1,6 @@
 ﻿using BE.Application.Common.Interfaces;
 using BE.Application.Common.Models;
 using BE.Application.Common.Models.EmailDtos;
-using BE.Application.Features.UserAuth.Commands.UserRegister;
-
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -29,28 +27,23 @@ namespace BE.Application.Features.UserAuth.Commands.UserEmployeeRegister
 
         public async Task<ResponseDto<RegisterDto>> Handle(UserEmployeeRegisterCommand request, CancellationToken cancellationToken)
         {
-            var response = await _identityService.RegisterAsync(request, cancellationToken);
+            var response = await _identityService.RegisterEmployeeAsync(request, cancellationToken);
             var roles = new List<string> { "Employee", };
 
-            var jwtDtoTask = await  _jwtService.GenerateTokenAsync(response.Id, response.Email,roles, cancellationToken);
+            var jwtDtoTask = await _jwtService.GenerateTokenAsync(response.Id, response.Email, roles, cancellationToken);
 
-            var sendEmailTask =  SendEmailVerificationAsync(response.Email, response.FirstName, response.EmailToken,cancellationToken);
+            var emailDto = new EmailSendVerificationDto(response.Email, response.FirstName, response.EmailToken);
+            await _emailService.SendEmailVerificationAsync(emailDto, cancellationToken);
 
-            await Task.WhenAll(sendEmailTask);
-
+         
             return new ResponseDto<RegisterDto>(new RegisterDto
             {
                 UserId = response.Id,
-                JwtDto =  jwtDtoTask
-            },"Welcome to AI-Career-Match");
-         
+                JwtDto = jwtDtoTask
+            }, "Welcome to AI-Career-Match");
+
         }
 
-        private Task SendEmailVerificationAsync(string email, string firstName, string emailToken, CancellationToken cancellationToken)
-        {
-            var emailDto = new EmailSendVerificationDto(email, firstName, emailToken);
-            return _emailService.SendEmailVerificationAsync(emailDto, cancellationToken);
-        }
 
 
     }

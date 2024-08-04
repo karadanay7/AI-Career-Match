@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE.Application.Features.UserAuth.Commands.UserEmployeeRegister
+namespace BE.Application.Features.UserAuth.Commands.UserEmployerRegister
 {
-    public class UserEmployeeRegisterCommandValidator : UserValidatioBase<UserEmployeeRegisterCommand>
+    public class UserEmployerRegisterCommandValidator : UserValidatioBase<UserEmployerRegisterCommand>
     {
-        public UserEmployeeRegisterCommandValidator(IIdentityService identityService) : base(identityService)
+        public UserEmployerRegisterCommandValidator(IIdentityService identityService) : base(identityService)
         {
+
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("Email is not valid");
 
@@ -33,6 +34,8 @@ namespace BE.Application.Features.UserAuth.Commands.UserEmployeeRegister
 
             RuleFor(x => x.LastName)
                 .NotEmpty().WithMessage("Last name is required");
+
+
         }
 
         private async Task<bool> CheckIfUserExists(string email, CancellationToken cancellationToken)

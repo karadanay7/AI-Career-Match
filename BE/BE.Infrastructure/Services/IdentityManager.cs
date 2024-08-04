@@ -1,6 +1,7 @@
 ﻿using BE.Application.Common.Interfaces;
 using BE.Application.Common.Models;
-using BE.Application.Features.UserAuth.Commands.UserRegister;
+using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
+using BE.Application.Features.UserAuth.Commands.UserEmployerRegister;
 using BE.Application.Features.UserAuth.Commands.UserVerifyEmail;
 using BE.Domain.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -35,7 +36,7 @@ namespace BE.Infrastructure.Services
             return false;
         }
 
-        public async Task<UserEmployeeRegisterResponseDto> RegisterAsync(UserEmployeeRegisterCommand command, CancellationToken cancellationToken)
+        public async Task<UserRegisterResponseDto> RegisterEmployeeAsync(UserEmployeeRegisterCommand command, CancellationToken cancellationToken)
         {
             var user = UserEmployeeRegisterCommand.ToUser(command);
 
@@ -51,10 +52,30 @@ namespace BE.Infrastructure.Services
             }
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            return new UserEmployeeRegisterResponseDto(user.Id, user.Email, user.FirstName, token);
+            return new UserRegisterResponseDto(user.Id, user.Email, user.FirstName, token);
 
 
         }
+
+        public async Task<UserRegisterResponseDto> RegisterEmployerAsync(UserEmployerRegisterCommand command, CancellationToken cancellationToken)
+        {
+            var user = UserEmployerRegisterCommand.ToUser(command);
+
+            var result = await _userManager.CreateAsync(user, command.Password);
+
+            if (!result.Succeeded)
+            {
+                //throw new Exception("User registration failed");
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                // Loglama yapılabilir, örneğin: 
+                Console.WriteLine($"User registration failed: {errors}");
+                throw new Exception($"User registration failed: {errors}");
+            }
+
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            return new UserRegisterResponseDto(user.Id, user.Email, user.FirstName, token);
+        }
+
 
         public async Task<bool> VerifyEmailAsync(UserVerifyEmailCommand command, CancellationToken cancellationToken)
         {
@@ -69,5 +90,7 @@ namespace BE.Infrastructure.Services
 
             return true;
         }
+
+
     }
 }

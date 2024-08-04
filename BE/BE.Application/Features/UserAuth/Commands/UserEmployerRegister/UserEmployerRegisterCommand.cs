@@ -1,5 +1,5 @@
 ﻿using BE.Application.Common.Models;
-
+using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
 using BE.Domain.Enums;
 using BE.Domain.Identity;
 using MediatR;
@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE.Application.Features.UserAuth.Commands.UserEmployeeRegister
+namespace BE.Application.Features.UserAuth.Commands.UserEmployerRegister
 {
-    public class UserEmployeeRegisterCommand :  IRequest<ResponseDto<RegisterDto>>
+    public class UserEmployerRegisterCommand : IRequest<ResponseDto<RegisterDto>>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -20,7 +20,7 @@ namespace BE.Application.Features.UserAuth.Commands.UserEmployeeRegister
         public string ConfirmPassword { get; set; }
 
 
-        public static User ToUser(UserEmployeeRegisterCommand command)
+        public static User ToUser(UserEmployerRegisterCommand command)
         {
             var id = Guid.NewGuid();
 
@@ -33,10 +33,11 @@ namespace BE.Application.Features.UserAuth.Commands.UserEmployeeRegister
                 Email = command.Email,
                 CreatedOn = DateTimeOffset.UtcNow,
                 CreatedByUserId = id.ToString(),
-                UserType = UserType.Employee,
+                UserType = UserType.Employer,
                 EmailConfirmed = false,
             };
         }
-
     }
+
+  
 }
