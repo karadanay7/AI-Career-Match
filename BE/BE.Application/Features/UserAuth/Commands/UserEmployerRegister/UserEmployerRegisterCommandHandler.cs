@@ -34,9 +34,9 @@ namespace BE.Application.Features.UserAuth.Commands.UserEmployerRegister
 
             var emailDto = new EmailSendVerificationDto(response.Email, response.FirstName, response.EmailToken);
        
-            var sendEmailTask = _emailService.SendEmailVerificationAsync(emailDto, cancellationToken);
+           await  _emailService.SendEmailVerificationAsync(emailDto, cancellationToken);
 
-            await Task.WhenAll(sendEmailTask);
+      
 
             return new ResponseDto<RegisterDto>(new RegisterDto
             {

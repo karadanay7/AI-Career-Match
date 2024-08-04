@@ -32,10 +32,10 @@ namespace BE.Application.Features.UserAuth.Commands.UserEmployeeRegister
 
             var jwtDtoTask = await _jwtService.GenerateTokenAsync(response.Id, response.Email, roles, cancellationToken);
 
-            var sendEmailTask = SendEmailVerificationAsync(response.Email, response.FirstName, response.EmailToken, cancellationToken);
+            var emailDto = new EmailSendVerificationDto(response.Email, response.FirstName, response.EmailToken);
+            await _emailService.SendEmailVerificationAsync(emailDto, cancellationToken);
 
-            await Task.WhenAll(sendEmailTask);
-
+         
             return new ResponseDto<RegisterDto>(new RegisterDto
             {
                 UserId = response.Id,
@@ -44,11 +44,6 @@ namespace BE.Application.Features.UserAuth.Commands.UserEmployeeRegister
 
         }
 
-        private Task SendEmailVerificationAsync(string email, string firstName, string emailToken, CancellationToken cancellationToken)
-        {
-            var emailDto = new EmailSendVerificationDto(email, firstName, emailToken);
-            return _emailService.SendEmailVerificationAsync(emailDto, cancellationToken);
-        }
 
 
     }
