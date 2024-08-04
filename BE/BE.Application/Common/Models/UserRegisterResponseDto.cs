@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE.Application.Common.Models
 {
-    public class UserEmployeeRegisterResponseDto
+    public class UserRegisterResponseDto
     {
         public Guid Id { get; set; }
         public string Email { get; set; }
@@ -14,7 +14,7 @@ namespace BE.Application.Common.Models
         public string EmailToken { get; set; }
 
 
-        public UserEmployeeRegisterResponseDto(Guid id, string email, string firstName, string emailToken)
+        public UserRegisterResponseDto(Guid id, string email, string firstName, string emailToken)
         {
             Id = id;
             Email = email;

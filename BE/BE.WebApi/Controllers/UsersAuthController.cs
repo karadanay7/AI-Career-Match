@@ -1,4 +1,5 @@
-﻿using BE.Application.Features.UserAuth.Commands.UserRegister;
+﻿using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
+using BE.Application.Features.UserAuth.Commands.UserEmployerRegister;
 using BE.Application.Features.UserAuth.Commands.UserVerifyEmail;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -17,8 +18,15 @@ namespace BE.WebApi.Controllers
             _mediatr = mediatr;
         }
 
-        [HttpPost("register")]
+        [HttpPost("register-employee")]
         public async Task<IActionResult> RegisterEmployeeAsync(UserEmployeeRegisterCommand command, CancellationToken cancellationToken)
+        {
+            return Ok(await _mediatr.Send(command, cancellationToken));
+        }
+
+
+        [HttpPost("register-employer")]
+        public async Task<IActionResult> RegisterEmployerAsync(UserEmployerRegisterCommand command, CancellationToken cancellationToken)
         {
             return Ok(await _mediatr.Send(command, cancellationToken));
         }
