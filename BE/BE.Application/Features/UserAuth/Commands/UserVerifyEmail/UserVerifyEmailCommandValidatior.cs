@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace BE.Application.Features.UserAuth.Commands.UserVerifyEmail
 {
-    public class UserVerifyEmailCommandValidation : UserValidatioBase<UserVerifyEmailCommand>
+    public class UserVerifyEmailCommandValidatior : UserValidatioBase<UserVerifyEmailCommand>
     {
-        public UserVerifyEmailCommandValidation(IIdentityService identityService) : base(identityService)
+        public UserVerifyEmailCommandValidatior(IIdentityService identityService) : base(identityService)
         {
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("{PropertyName} is required")

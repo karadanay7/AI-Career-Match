@@ -1,5 +1,6 @@
 ﻿using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
 using BE.Application.Features.UserAuth.Commands.UserEmployerRegister;
+using BE.Application.Features.UserAuth.Commands.UserLogin;
 using BE.Application.Features.UserAuth.Commands.UserVerifyEmail;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -36,6 +37,12 @@ namespace BE.WebApi.Controllers
         public async Task<IActionResult> VerifyEmailAsync([FromQuery] UserVerifyEmailCommand command, CancellationToken cancellationToken)
         {
 
+            return Ok(await _mediatr.Send(command, cancellationToken));
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginAsync(UserLoginCommand command, CancellationToken cancellationToken)
+        {
             return Ok(await _mediatr.Send(command, cancellationToken));
         }
     }  

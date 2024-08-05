@@ -1,6 +1,7 @@
 ﻿using BE.Application.Common.Models;
 using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
 using BE.Application.Features.UserAuth.Commands.UserEmployerRegister;
+using BE.Application.Features.UserAuth.Commands.UserLogin;
 using BE.Application.Features.UserAuth.Commands.UserVerifyEmail;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,10 @@ namespace BE.Application.Common.Interfaces
 
         Task<UserRegisterResponseDto> RegisterEmployerAsync(UserEmployerRegisterCommand command, CancellationToken cancellationToken);
         Task<bool> VerifyEmailAsync(UserVerifyEmailCommand command, CancellationToken cancellationToken);
+
+        Task<bool> CheckIfEmailVerifiedAsync(string email, CancellationToken cancellationToken);
+        Task<bool> CheckPasswordSignInAsync(string email, string password, CancellationToken cancellationToken);
+
+        Task<JwtDto> LoginAsync(UserLoginCommand userLoginCommand, CancellationToken cancellationToken);
     }
 }
