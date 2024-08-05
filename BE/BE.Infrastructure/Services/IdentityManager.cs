@@ -2,9 +2,11 @@
 using BE.Application.Common.Models;
 using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
 using BE.Application.Features.UserAuth.Commands.UserEmployerRegister;
+using BE.Application.Features.UserAuth.Commands.UserLogin;
 using BE.Application.Features.UserAuth.Commands.UserVerifyEmail;
 using BE.Domain.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,18 @@ namespace BE.Infrastructure.Services
             _jwtService = jwtService;
         }
 
+        public Task<bool> CheckIfEmailVerifiedAsync(string email, CancellationToken cancellationToken)
+        {
+            return _userManager.Users.AnyAsync(x => x.Email == email && x.EmailConfirmed, cancellationToken);
+        }
+
+        public async  Task<bool> CheckPasswordSignInAsync(string email, string password, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user is null)
+                return false;
+            return await _userManager.CheckPasswordAsync(user, password);
+        }
 
         public async Task<bool> IsEmailExistsAsync(string email, CancellationToken cancellationToken)
         {
@@ -34,6 +48,14 @@ namespace BE.Infrastructure.Services
             }
 
             return false;
+        }
+
+        public async Task<JwtDto> LoginAsync(UserLoginCommand userLoginCommand, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.FindByEmailAsync(userLoginCommand.Email);
+            List<string> roles= new List<string> { user.UserType.ToString() };
+            var jwtDto = await _jwtService.GenerateTokenAsync(user.Id, user.Email,roles,cancellationToken);
+            return jwtDto;
         }
 
         public async Task<UserRegisterResponseDto> RegisterEmployeeAsync(UserEmployeeRegisterCommand command, CancellationToken cancellationToken)

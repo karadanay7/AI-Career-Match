@@ -29,12 +29,12 @@ namespace BE.Application.Features.UserAuth.Commands.UserEmployerRegister
                 Id = id,
                 FirstName = command.FirstName,
                 LastName = command.LastName,
-                UserName = command.FirstName + command.LastName,
+                UserName = command.Email,
                 Email = command.Email,
                 CreatedOn = DateTimeOffset.UtcNow,
                 CreatedByUserId = id.ToString(),
                 UserType = UserType.Employer,
-                EmailConfirmed = false,
+                EmailConfirmed = true,
             };
         }
     }
