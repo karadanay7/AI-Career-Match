@@ -1,5 +1,5 @@
 <template>
-    <div class="flex">
+    <div class="flex min-h-screen">
       <!-- Sidebar for Company List -->
       <div class="w-1/4 p-4 border-r border-gray-200">
         <h2 class="text-xl font-semibold mb-4">Companies</h2>
@@ -20,6 +20,11 @@
         <p class="text-gray-600 dark:text-gray-400">{{ selectedCompany.location }}</p>
         <p class="text-sm text-gray-500 dark:text-gray-500">{{ selectedCompany.industry }}</p>
         <p class="text-gray-700 dark:text-gray-300 mt-4">{{ selectedCompany.description }}</p>
+        <div class="mt-4">
+          <p class="text-sm text-gray-500 dark:text-gray-500"><strong>Rating:</strong> {{ selectedCompany.rating }} / 5</p>
+          <p class="text-sm text-gray-500 dark:text-gray-500"><strong>Number of Employees:</strong> {{ selectedCompany.employees }}</p>
+          <p class="text-sm text-gray-500 dark:text-gray-500"><strong>About Company:</strong> {{ selectedCompany.about }}</p>
+        </div>
       </div>
       <div v-else class="w-3/4 p-4">
         <p class="text-gray-600 dark:text-gray-400">Select a company to view details.</p>
@@ -36,28 +41,40 @@
       name: 'Tech Corp',
       location: 'San Francisco, CA',
       industry: 'Software Development',
-      description: 'Leading the way in innovative software solutions for businesses around the world.'
+      description: 'Leading the way in innovative software solutions for businesses around the world.',
+      rating: 4.7,
+      employees: 1500,
+      about: 'Tech Corp specializes in providing comprehensive software solutions to enterprises worldwide. Our mission is to drive innovation through cutting-edge technology.'
     },
     {
       id: 2,
       name: 'Innovate Inc.',
       location: 'New York, NY',
       industry: 'Product Development',
-      description: 'Specializing in creating cutting-edge products that shape the future of technology.'
+      description: 'Specializing in creating cutting-edge products that shape the future of technology.',
+      rating: 4.5,
+      employees: 800,
+      about: 'Innovate Inc. is dedicated to developing state-of-the-art products that redefine the tech landscape. We focus on innovation and excellence in every project.'
     },
     {
       id: 3,
       name: 'Design Studio',
       location: 'Remote',
       industry: 'Design and UX',
-      description: 'Delivering exceptional user experiences through innovative design practices.'
+      description: 'Delivering exceptional user experiences through innovative design practices.',
+      rating: 4.9,
+      employees: 250,
+      about: 'Design Studio is a leader in the field of user experience and design. Our team of experts crafts beautiful and intuitive interfaces that delight users.'
     },
     {
       id: 4,
       name: 'Data Analytics Co.',
       location: 'Los Angeles, CA',
       industry: 'Data Science',
-      description: 'Harnessing the power of data to drive business decisions and innovation.'
+      description: 'Harnessing the power of data to drive business decisions and innovation.',
+      rating: 4.6,
+      employees: 500,
+      about: 'Data Analytics Co. transforms data into actionable insights. We help businesses make informed decisions through advanced data analysis and interpretation.'
     }
     // Add more company data here
   ];
