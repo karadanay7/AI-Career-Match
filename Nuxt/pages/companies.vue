@@ -16,7 +16,11 @@
       </div>
       <!-- Company Details View -->
       <div class="w-3/4 p-4" v-if="selectedCompany">
-        <h2 class="text-2xl font-semibold mb-2">{{ selectedCompany.name }}</h2>
+        <div class="flex items-center gap-20">
+            <div>  <h2 class="text-2xl font-semibold mb-2">{{ selectedCompany.name }}</h2></div>
+            <div><img :src="selectedCompany.logo" alt="compnay logo" class="w-20 h-20 rounded-full"> </div>
+        </div>
+      
         <p class="text-gray-600 dark:text-gray-400">{{ selectedCompany.location }}</p>
         <p class="text-sm text-gray-500 dark:text-gray-500">{{ selectedCompany.industry }}</p>
         <p class="text-gray-700 dark:text-gray-300 mt-4">{{ selectedCompany.description }}</p>
@@ -44,7 +48,8 @@
       description: 'Leading the way in innovative software solutions for businesses around the world.',
       rating: 4.7,
       employees: 1500,
-      about: 'Tech Corp specializes in providing comprehensive software solutions to enterprises worldwide. Our mission is to drive innovation through cutting-edge technology.'
+      about: 'Tech Corp specializes in providing comprehensive software solutions to enterprises worldwide. Our mission is to drive innovation through cutting-edge technology.',
+      logo: '/images/companylogo.png'
     },
     {
       id: 2,
@@ -54,7 +59,8 @@
       description: 'Specializing in creating cutting-edge products that shape the future of technology.',
       rating: 4.5,
       employees: 800,
-      about: 'Innovate Inc. is dedicated to developing state-of-the-art products that redefine the tech landscape. We focus on innovation and excellence in every project.'
+      about: 'Innovate Inc. is dedicated to developing state-of-the-art products that redefine the tech landscape. We focus on innovation and excellence in every project.',
+        logo: '/images/companylogo.png'
     },
     {
       id: 3,
@@ -64,7 +70,8 @@
       description: 'Delivering exceptional user experiences through innovative design practices.',
       rating: 4.9,
       employees: 250,
-      about: 'Design Studio is a leader in the field of user experience and design. Our team of experts crafts beautiful and intuitive interfaces that delight users.'
+      about: 'Design Studio is a leader in the field of user experience and design. Our team of experts crafts beautiful and intuitive interfaces that delight users.',
+        logo: '/images/companylogo.png'
     },
     {
       id: 4,
@@ -74,7 +81,8 @@
       description: 'Harnessing the power of data to drive business decisions and innovation.',
       rating: 4.6,
       employees: 500,
-      about: 'Data Analytics Co. transforms data into actionable insights. We help businesses make informed decisions through advanced data analysis and interpretation.'
+      about: 'Data Analytics Co. transforms data into actionable insights. We help businesses make informed decisions through advanced data analysis and interpretation.',
+        logo: '/images/companylogo.png'
     }
     // Add more company data here
   ];
