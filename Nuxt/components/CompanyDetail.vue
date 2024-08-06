@@ -1,10 +1,13 @@
 <template>
-    <div v-if="company" class="p-4">
+    <UContainer>
+        <div v-if="company" class="p-4">
       <h2 class="text-2xl font-semibold mb-2">{{ company.name }}</h2>
       <p class="text-gray-600 dark:text-gray-400">{{ company.location }}</p>
       <p class="text-sm text-gray-500 dark:text-gray-500">{{ company.industry }}</p>
       <p class="text-gray-700 dark:text-gray-300 mt-4">{{ company.description }}</p>
     </div>
+    </UContainer>
+   
   </template>
   
   <script setup lang="ts">
