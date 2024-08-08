@@ -1,5 +1,5 @@
 <template>
-      <NuxtLayout :name="layout">
+      <NuxtLayout :name="joblayout">
         <UContainer>
             <div v-if="job">
   
