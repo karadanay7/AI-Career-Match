@@ -4,19 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE.Application.Common.Models
+namespace BE.Application.Common.Models.User
 {
-    public class UserRegisterResponseDto
+    public class UserForgotPasswordResponseDto
     {
         public Guid Id { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string EmailToken { get; set; }
 
-
-        public UserRegisterResponseDto(Guid id, string email, string firstName, string emailToken)
+        public UserForgotPasswordResponseDto(Guid ıd, string email, string firstName, string emailToken)
         {
-            Id = id;
+            Id = ıd;
             Email = email;
             FirstName = firstName;
             EmailToken = emailToken;
