@@ -9,6 +9,7 @@ namespace BE.Application.Common.Interfaces
 {
     public interface IEmailService
     {
+        Task SendEmailResetPasswordAsync(EmailSendResetPasswordDto emailDto, CancellationToken cancellationToken);
         Task SendEmailVerificationAsync(EmailSendVerificationDto emailSendVerificationDto, CancellationToken cancellationToken);
     }
 }

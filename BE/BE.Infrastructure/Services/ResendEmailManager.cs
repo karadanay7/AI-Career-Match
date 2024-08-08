@@ -63,5 +63,26 @@ namespace BE.Infrastructure.Services
 
             return _resend.EmailSendAsync(message, cancellationToken);
         }
+
+        public async Task SendEmailResetPasswordAsync(EmailSendResetPasswordDto emailDto, CancellationToken cancellationToken)
+        {
+
+            var encodedEmail = HttpUtility.UrlEncode(emailDto.Email);
+            var encodedToken = HttpUtility.UrlEncode(emailDto.Token);
+            var link = $"{ApiBaseUrl}Users/forgot-password?email={encodedEmail}&token={encodedToken}";
+
+            var htmlContent = await File.ReadAllTextAsync($"{_rootPathService.GetRootPath()}/email-templates/userauth-template.html", cancellationToken);
+            htmlContent = htmlContent.Replace("{{{link}}}", link);
+            htmlContent = htmlContent.Replace("{{{subject}}}", "Reset Your Password");
+            htmlContent = htmlContent.Replace("{{{content}}}",
+                $"Hello 👋,<br/><br/>We received a request to reset the password for your TherapAI account. " +
+                $"Please click the button below to reset your password:<br/><br/>" +
+                $"If you did not request this, please ignore this email.<br/><br/>" +
+                $"Best regards,<br/>The TherapAI Team");
+
+            htmlContent = htmlContent.Replace("{{{buttonText}}}", "Reset Your Password");
+
+            await SendEmailAsync(new EmailSendDto(emailDto.Email, "Reset Your Password | TherapAI", htmlContent), cancellationToken);
+        }
     }
 }

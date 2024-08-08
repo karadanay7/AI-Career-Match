@@ -1,5 +1,6 @@
 ﻿using BE.Application.Common.Interfaces;
 using BE.Application.Common.Models;
+using BE.Application.Common.Models.User;
 using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
 using BE.Application.Features.UserAuth.Commands.UserEmployerRegister;
 using BE.Application.Features.UserAuth.Commands.UserLogin;
@@ -37,6 +38,15 @@ namespace BE.Infrastructure.Services
             if (user is null)
                 return false;
             return await _userManager.CheckPasswordAsync(user, password);
+        }
+
+        public async Task<UserForgotPasswordResponseDto> ForgotPasswordAsync(string email, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            return new UserForgotPasswordResponseDto(user.Id, user.Email, user.FirstName, token);
         }
 
         public async Task<bool> IsEmailExistsAsync(string email, CancellationToken cancellationToken)

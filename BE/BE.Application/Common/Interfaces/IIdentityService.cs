@@ -1,4 +1,5 @@
 ﻿using BE.Application.Common.Models;
+using BE.Application.Common.Models.User;
 using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
 using BE.Application.Features.UserAuth.Commands.UserEmployerRegister;
 using BE.Application.Features.UserAuth.Commands.UserLogin;
@@ -23,5 +24,7 @@ namespace BE.Application.Common.Interfaces
         Task<bool> CheckPasswordSignInAsync(string email, string password, CancellationToken cancellationToken);
 
         Task<JwtDto> LoginAsync(UserLoginCommand userLoginCommand, CancellationToken cancellationToken);
+
+        Task<UserForgotPasswordResponseDto> ForgotPasswordAsync(string email, CancellationToken cancellationToken);
     }
 }
