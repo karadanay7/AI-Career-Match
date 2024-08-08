@@ -1,7 +1,7 @@
 <template>
-    <NuxtLayout :name="joblayout">
+    <NuxtLayout :name="layout">
     <div>
-      <h1 class="text-2xl font-bold mb-4">Job Listings</h1>
+      <h1 class="text-2xl font-bold mb-4">Company Listings</h1>
       <div v-if="jobs.length">
         <ul class="list-disc pl-5">
           <li v-for="job in jobs" :key="job.id" class="mb-2">
