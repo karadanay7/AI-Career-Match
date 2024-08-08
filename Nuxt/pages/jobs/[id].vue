@@ -27,7 +27,7 @@
  
   
   definePageMeta({
-    layout: 'default'
+    layout: 'joblayout'
   });
   
   const route = useRoute();
