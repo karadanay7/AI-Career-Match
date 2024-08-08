@@ -1,12 +1,12 @@
 <template>
-    <NuxtLayout :name="layout">
+    <NuxtLayout :name="companylayout">
     <div>
       <h1 class="text-2xl font-bold mb-4">Company Listings</h1>
-      <div v-if="jobs.length">
+      <div v-if="companies.length">
         <ul class="list-disc pl-5">
-          <li v-for="job in jobs" :key="job.id" class="mb-2">
-            <NuxtLink :to="`/jobs/${job.id}`" class="text-blue-500 hover:underline">
-              {{ job.title }}
+          <li v-for="company in companies" :key="company.id" class="mb-2">
+            <NuxtLink :to="`/companies/${company.id}`" class="text-blue-500 hover:underline">
+              {{ company.title }}
             </NuxtLink>
           </li>
         </ul>
@@ -22,16 +22,16 @@
 
   
   definePageMeta({
-    layout: 'default'
+    layout: 'companydefault'
   });
   
-  const jobs = ref([]);
+  const companies = ref([]);
   
   onMounted(async () => {
-    jobs.value = await fetchJobList();
+    companies.value = await fetchCompanyList();
   });
   
-  async function fetchJobList() {
+  async function fetchCompanyList() {
     return [
       { id: 1, title: 'Software Engineer' },
       { id: 2, title: 'Product Manager' },
@@ -42,7 +42,4 @@
   }
   </script>
   
-  <style scoped>
-  /* Add styles if needed */
-  </style>
   

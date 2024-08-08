@@ -7,7 +7,7 @@
     size="md"
     color="white"
     :trailing="false"
-    placeholder="Serach Company" class="w-1/2" />
+    placeholder="Search Company..." class="w-1/2" />
 
         </div>
         <div class="flex">
