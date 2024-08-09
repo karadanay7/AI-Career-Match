@@ -3,6 +3,7 @@ using BE.Application.Common.Models.User;
 using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
 using BE.Application.Features.UserAuth.Commands.UserEmployerRegister;
 using BE.Application.Features.UserAuth.Commands.UserLogin;
+using BE.Application.Features.UserAuth.Commands.UserResetPassword;
 using BE.Application.Features.UserAuth.Commands.UserVerifyEmail;
 using System;
 using System.Collections.Generic;
@@ -26,5 +27,7 @@ namespace BE.Application.Common.Interfaces
         Task<JwtDto> LoginAsync(UserLoginCommand userLoginCommand, CancellationToken cancellationToken);
 
         Task<UserForgotPasswordResponseDto> ForgotPasswordAsync(string email, CancellationToken cancellationToken);
+        Task<bool> ResetPasswordAsync (UserResetPasswordCommand command, CancellationToken cancellationToken);
+
     }
 }

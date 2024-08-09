@@ -47,23 +47,6 @@ namespace BE.Infrastructure.Services
             await SendEmailAsync(new EmailSendDto(emailDto.Email, "Verify Your Email Address | AI-Career-Match", htmlContent), cancellationToken);
         }
 
-
-
-        private Task SendEmailAsync(EmailSendDto emailSendDto, CancellationToken cancellationToken)
-        {
-            var message = new EmailMessage();
-
-            message.From = "onboarding@resend.dev";
-
-            foreach (var emailAddress in emailSendDto.Addresses)
-                message.To.Add(emailAddress);
-
-            message.Subject = emailSendDto.Subject;
-            message.HtmlBody = emailSendDto.HtmlContent;
-
-            return _resend.EmailSendAsync(message, cancellationToken);
-        }
-
         public async Task SendEmailResetPasswordAsync(EmailSendResetPasswordDto emailDto, CancellationToken cancellationToken)
         {
 
@@ -84,5 +67,36 @@ namespace BE.Infrastructure.Services
 
             await SendEmailAsync(new EmailSendDto(emailDto.Email, "Reset Your Password | TherapAI", htmlContent), cancellationToken);
         }
+
+
+        public async Task SendPasswordChangedNotificationAsync(string email, CancellationToken cancellationToken)
+        {
+            var htmlContent = await File.ReadAllTextAsync($"{_rootPathService.GetRootPath()}/email-templates/userauth-notificationTemplate.html", cancellationToken);
+
+            htmlContent = htmlContent.Replace("{{{subject}}}", "Your Password Has Been Changed");
+            htmlContent = htmlContent.Replace("{{{content}}}",
+                $"Hello 👋,<br/><br/>We wanted to let you know that your password for TherapAI has been successfully changed 👍" +
+                $"If you did not make this change, please contact our support team immediately.<br/><br/>" +
+                $"Best regards,<br/>The TherapAI Team");
+
+            await SendEmailAsync(new EmailSendDto(email, "Password Changed Notification | TherapAI", htmlContent), cancellationToken);
+        }
+
+        private Task SendEmailAsync(EmailSendDto emailSendDto, CancellationToken cancellationToken)
+        {
+            var message = new EmailMessage();
+
+            message.From = "onboarding@resend.dev";
+
+            foreach (var emailAddress in emailSendDto.Addresses)
+                message.To.Add(emailAddress);
+
+            message.Subject = emailSendDto.Subject;
+            message.HtmlBody = emailSendDto.HtmlContent;
+
+            return _resend.EmailSendAsync(message, cancellationToken);
+        }
+
+       
     }
 }

@@ -11,5 +11,6 @@ namespace BE.Application.Common.Interfaces
     {
         Task SendEmailResetPasswordAsync(EmailSendResetPasswordDto emailDto, CancellationToken cancellationToken);
         Task SendEmailVerificationAsync(EmailSendVerificationDto emailSendVerificationDto, CancellationToken cancellationToken);
+        Task SendPasswordChangedNotificationAsync(string email,CancellationToken cancellationToken);
     }
 }

@@ -4,6 +4,7 @@ using BE.Application.Common.Models.User;
 using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
 using BE.Application.Features.UserAuth.Commands.UserEmployerRegister;
 using BE.Application.Features.UserAuth.Commands.UserLogin;
+using BE.Application.Features.UserAuth.Commands.UserResetPassword;
 using BE.Application.Features.UserAuth.Commands.UserVerifyEmail;
 using BE.Domain.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace BE.Infrastructure.Services
 {
@@ -108,6 +110,20 @@ namespace BE.Infrastructure.Services
             return new UserRegisterResponseDto(user.Id, user.Email, user.FirstName, token);
         }
 
+        public async Task<bool> ResetPasswordAsync(UserResetPasswordCommand command, CancellationToken cancellationToken)
+        {
+            var user= await _userManager.FindByEmailAsync(command.Email);
+            var decodedToken = HttpUtility.UrlEncode(command.Token);
+
+            var result=await _userManager.ResetPasswordAsync(user, decodedToken,command.Password);
+
+            if (!result.Succeeded)
+            {
+                throw new Exception("Password reset failed");
+            }
+
+            return true;
+        }
 
         public async Task<bool> VerifyEmailAsync(UserVerifyEmailCommand command, CancellationToken cancellationToken)
         {
