@@ -1,10 +1,10 @@
 <template>
     <div class="w-[400px] p-4   min-h-screen">
-      <!-- Job Categories Section -->
+      <!-- JCompany Section -->
       <section class="mb-6">
         <h2 class="text-xl font-semibold mb-4">Companies</h2>
         <ul class="space-y-4">
-          <li v-for="company in companies" :key="company.id">
+          <li v-for="company in companiesList" :key="company.id">
             <NuxtLink :to="`/companies/${company.id}`" class="block p-4 rounded bg-slate-100 dark:bg-gray-800 hover:dark:bg-gray-700 hover:bg-slate-300">
               <h3 class="font-semibold text-lg">{{ company.name }}</h3>
               <p class="text-gray-600 dark:text-gray-400">{{ company.industry }}</p>
@@ -18,12 +18,10 @@
   </template>
 <script setup lang="ts">
 
-const selectedCompany = ref(null);
 
-const selectCompany = (company) => {
-  selectedCompany.value = company;
-};
-const companies = [
+
+
+const companiesList = [
   {
     id: 1,
     name: 'Tech Corp',

@@ -4,33 +4,15 @@
   
       <!-- Search Bar -->
       <div class="mb-6 space-y-4 md:flex md:space-y-0 md:space-x-4">
-        <div class="md:w-1/2">
-          <label for="role" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-            Job Role
-          </label>
-          <select
-            id="role"
-            v-model="selectedRole"
-            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-700 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
-          >
-            <option value="">All Roles</option>
-            <option v-for="role in uniqueRoles" :key="role">{{ role }}</option>
-          </select>
-        </div>
+        <!-- Job Role Selection -->
+        <UFormGroup class="md:w-1/2" label="Job Role">
+          <UInputMenu v-model="selectedRole" :options="uniqueRoles" />
+        </UFormGroup>
   
-        <div class="md:w-1/2">
-          <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-            Location
-          </label>
-          <select
-            id="location"
-            v-model="selectedLocation"
-            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-700 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
-          >
-            <option value="">All Locations</option>
-            <option v-for="location in uniqueLocations" :key="location">{{ location }}</option>
-          </select>
-        </div>
+        <!-- Location Selection -->
+        <UFormGroup class="md:w-1/2" label="Location">
+          <UInputMenu v-model="selectedLocation" :options="uniqueLocations" />
+        </UFormGroup>
       </div>
   
       <!-- Salary List -->
@@ -67,8 +49,8 @@
   ];
   
   // Reactive variables for the selected filters
-  const selectedRole = ref('');
-  const selectedLocation = ref('');
+  const selectedRole = ref('Software Engineer');
+  const selectedLocation = ref('San Francisco, CA');
   
   // Computed property to get unique job roles
   const uniqueRoles = computed(() => {

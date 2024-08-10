@@ -22,7 +22,7 @@
 
   
   definePageMeta({
-    layout: 'companydefault'
+    layout: 'companylayout'
   });
   
   const companies = ref([]);

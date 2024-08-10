@@ -22,7 +22,7 @@
 
   
   definePageMeta({
-    layout: 'default'
+    layout: 'joblayout'
   });
   
   const jobs = ref([]);
