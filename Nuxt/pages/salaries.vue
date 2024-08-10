@@ -1,37 +1,40 @@
 <template>
     <div class="min-h-screen p-8">
-      <h1 class="text-2xl font-bold mb-6">Salary Ranges by Job Role</h1>
+        <UContainer>
+            <h1 class="text-2xl font-bold mb-6">Salary Ranges by Job Role</h1>
   
-      <!-- Search Bar -->
-      <div class="mb-6 space-y-4 md:flex md:space-y-0 md:space-x-4">
-        <!-- Job Role Selection -->
-        <UFormGroup class="md:w-1/2" label="Job Role">
-          <UInputMenu v-model="selectedRole" :options="uniqueRoles" />
-        </UFormGroup>
-  
-        <!-- Location Selection -->
-        <UFormGroup class="md:w-1/2" label="Location">
-          <UInputMenu v-model="selectedLocation" :options="uniqueLocations" />
-        </UFormGroup>
+  <!-- Search Bar -->
+  <div class="mb-6 space-y-4 md:flex md:space-y-0 md:space-x-4">
+    <!-- Job Role Selection -->
+    <UFormGroup class="w-[300px]" label="Job Role">
+      <UInputMenu v-model="selectedRole" :options="uniqueRoles" />
+    </UFormGroup>
+
+    <!-- Location Selection -->
+    <UFormGroup class="w-[300px]" label="Location">
+      <UInputMenu v-model="selectedLocation" :options="uniqueLocations" />
+    </UFormGroup>
+  </div>
+
+  <!-- Salary List -->
+  <div class="space-y-4">
+    <div
+      v-for="role in filteredRoles"
+      :key="role.id"
+      class="p-4 border rounded-lg shadow-sm bg-slate-50 dark:bg-gray-800"
+    >
+      <h2 class="text-xl font-semibold">{{ role.title }}</h2>
+      <p class="text-gray-600 dark:text-gray-400">{{ role.location }}</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-lg font-medium">Salary Range:</span>
+        <span class="text-gray-700 dark:text-gray-300">
+          ${{ role.salary.min }} - ${{ role.salary.max }} per year
+        </span>
       </div>
-  
-      <!-- Salary List -->
-      <div class="space-y-4">
-        <div
-          v-for="role in filteredRoles"
-          :key="role.id"
-          class="p-4 border rounded-lg shadow-sm bg-slate-50 dark:bg-gray-800"
-        >
-          <h2 class="text-xl font-semibold">{{ role.title }}</h2>
-          <p class="text-gray-600 dark:text-gray-400">{{ role.location }}</p>
-          <div class="flex justify-between items-center mt-2">
-            <span class="text-lg font-medium">Salary Range:</span>
-            <span class="text-gray-700 dark:text-gray-300">
-              ${{ role.salary.min }} - ${{ role.salary.max }} per year
-            </span>
-          </div>
-        </div>
-      </div>
+    </div>
+  </div>
+        </UContainer>
+     
     </div>
   </template>
   
