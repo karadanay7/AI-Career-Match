@@ -28,6 +28,6 @@ namespace BE.Application.Common.Interfaces
 
         Task<UserForgotPasswordResponseDto> ForgotPasswordAsync(string email, CancellationToken cancellationToken);
         Task<bool> ResetPasswordAsync (UserResetPasswordCommand command, CancellationToken cancellationToken);
-
+        Task<bool> ChangePasswordAsync(Guid userId, string currentPassword, string newPassword, CancellationToken cancellationToken);
     }
 }
