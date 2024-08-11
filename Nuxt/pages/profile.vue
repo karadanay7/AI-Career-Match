@@ -9,5 +9,5 @@
 <script setup lang="ts">
 
 
-const userRole = ref('candidate'); // Assuming the user role is 'candidate'. Update this accordingly.
+const userRole = ref('employer'); // Assuming the user role is 'candidate'. Update this accordingly.
 </script>
