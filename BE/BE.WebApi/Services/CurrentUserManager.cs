@@ -13,11 +13,36 @@ namespace BE.WebApi.Services
         }
 
         public Guid UserId => GetUserId();
+      
 
         private Guid GetUserId()
         {
-            var userId = _contextAccessor.HttpContext?.User?.FindFirstValue("uid");
-            return userId is null ? Guid.Empty: Guid.Parse(userId);
+            if (_contextAccessor.HttpContext == null)
+            {
+            
+                Console.WriteLine("HttpContext null, UID claim alınamıyor.");
+                throw new Exception("HttpContext erişilemez.");
+            }
+
+            var userIdClaim = _contextAccessor.HttpContext?.User?.FindFirst("uid");
+
+            
+            if (userIdClaim == null)
+            {
+                
+                Console.WriteLine("UID claim'i bulunamadı.");
+              
+                throw new Exception("Kullanıcı ID'si bulunamadı (uid claim).");
+            }
+
+        
+            if (!Guid.TryParse(userIdClaim.Value, out var userId))
+            {
+              
+                throw new Exception("UID claim'i geçersiz bir GUID formatında.");
+            }
+
+            return userId;
         }
     }
 }
