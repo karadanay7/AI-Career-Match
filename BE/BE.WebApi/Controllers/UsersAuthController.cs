@@ -1,8 +1,12 @@
-﻿using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
+﻿using BE.Application.Features.UserAuth.Commands.UserChangePassword;
+using BE.Application.Features.UserAuth.Commands.UserEmployeeRegister;
 using BE.Application.Features.UserAuth.Commands.UserEmployerRegister;
+using BE.Application.Features.UserAuth.Commands.UserForgetPassword;
 using BE.Application.Features.UserAuth.Commands.UserLogin;
+using BE.Application.Features.UserAuth.Commands.UserResetPassword;
 using BE.Application.Features.UserAuth.Commands.UserVerifyEmail;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -45,5 +49,33 @@ namespace BE.WebApi.Controllers
         {
             return Ok(await _mediatr.Send(command, cancellationToken));
         }
-    }  
+
+
+        [HttpGet("forgot-password")]
+        public async Task<IActionResult> ForgotPasswordAsync([FromQuery] UserForgetPasswordCommand command, CancellationToken cancellationToken)
+        {
+            return Ok(await _mediatr.Send(command, cancellationToken));
+        }
+
+        [HttpGet("reset-password")]
+
+        public async Task<IActionResult> ResetPasswordAsync([FromQuery] UserResetPasswordCommand command, CancellationToken cancellationToken)
+        {
+
+            return Ok(await _mediatr.Send(command, cancellationToken));
+
+        }
+
+
+        [Authorize(Roles = "Employee,Employer")]
+        [HttpGet("change-password")]
+
+        public async Task<IActionResult> ChangePasswordAsync([FromQuery] UserChangePasswordCommand command, CancellationToken cancellationToken)
+        {
+
+            return Ok(await _mediatr.Send(command, cancellationToken));
+
+        }
+
+    }
 }
