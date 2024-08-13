@@ -2,10 +2,10 @@
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900 py-10">
       <div class="max-w-2xl mx-auto">
         <!-- Page Title -->
-        <h1 class="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-gray-100">Community</h1>
+      
   
         <!-- New Post Section -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+        <UCard class=" p-6 rounded-lg shadow-md mb-6">
           <div class="flex items-start space-x-4">
             <img
               class="h-12 w-12 rounded-full object-cover"
@@ -22,17 +22,17 @@
               <div class="flex justify-end space-x-4 mt-4">
                 <button
                   @click="addPost"
-                  class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                  class="bg-sky-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
                 >
                   Share
                 </button>
               </div>
             </div>
           </div>
-        </div>
+        </UCard>
   
         <!-- Posts Section -->
-        <div v-for="post in posts" :key="post.id" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+        <UCard v-for="post in posts" :key="post.id" class=" p-6 rounded-lg shadow-md mb-6">
           <div class="flex items-start space-x-4">
             <img
               class="h-12 w-12 rounded-full object-cover"
@@ -46,7 +46,7 @@
                   <p class="text-sm text-gray-500 dark:text-gray-400">{{ post.timestamp }}</p>
                 </div>
                 <div class="flex space-x-4">
-                  <button @click="likePost(post)" class="text-blue-500 hover:underline">{{ post.likes }} Likes</button>
+                  <button @click="likePost(post)" class="text-sky-500 hover:underline">{{ post.likes }} Likes</button>
                   <button @click="repostPost(post)" class="text-gray-500 dark:text-gray-400 hover:underline">Repost</button>
                 </div>
               </div>
@@ -67,19 +67,19 @@
               </div>
               <textarea
                 v-model="newCommentContent"
-                class="w-full border border-gray-300 dark:border-gray-700 p-2 rounded-lg mt-4 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400"
+                class="w-full border border-gray-300 dark:border-gray-700 p-2 rounded-lg mt-4 focus:outline-none focus:border-primary dark:focus:border-primary"
                 placeholder="Add a comment..."
                 rows="2"
               ></textarea>
               <button
                 @click="addComment(post)"
-                class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2 hover:bg-blue-600"
+                class="bg-sky-500 text-white px-4 py-2 rounded-lg mt-2 hover:bg-sky-600"
               >
                 Comment
               </button>
             </div>
           </div>
-        </div>
+        </Ucard>
       </div>
     </div>
   </template>
