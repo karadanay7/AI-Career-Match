@@ -13,19 +13,11 @@
               alt="User Avatar"
             />
             <div class="flex-1">
-              <textarea
-                v-model="newPostContent"
-                class="w-full border border-gray-300 dark:border-gray-700 p-2 rounded-lg focus:outline-none focus:border-blue-500 dark:focus:border-blue-400"
-                placeholder="What's on your mind?"
-                rows="3"
-              ></textarea>
+              <UTextarea v-model="newPostContent" placeholder="What's on your mind?"> </UTextarea>
+             
               <div class="flex justify-end space-x-4 mt-4">
-                <button
-                  @click="addPost"
-                  class="bg-sky-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-                >
-                  Share
-                </button>
+                <UButton @click="addPost" label="Share" size="md"/>
+               
               </div>
             </div>
           </div>
@@ -65,18 +57,11 @@
                   </div>
                 </div>
               </div>
-              <textarea
-                v-model="newCommentContent"
-                class="w-full border border-gray-300 dark:border-gray-700 p-2 rounded-lg mt-4 focus:outline-none focus:border-primary dark:focus:border-primary"
-                placeholder="Add a comment..."
-                rows="2"
-              ></textarea>
-              <button
-                @click="addComment(post)"
-                class="bg-sky-500 text-white px-4 py-2 rounded-lg mt-2 hover:bg-sky-600"
-              >
-                Comment
-              </button>
+              <UTextarea  v-model="newCommentContent" placeholder="Add a comment..." class="mt-2" />
+
+           
+            
+              <UButton @click="addComment(post)" label="Comment" size="md" class="mt-2"/>
             </div>
           </div>
         </Ucard>
