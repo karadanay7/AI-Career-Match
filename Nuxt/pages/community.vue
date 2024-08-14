@@ -37,9 +37,20 @@
                   <p class="font-semibold text-gray-900 dark:text-gray-100">{{ post.user.name }}</p>
                   <p class="text-sm text-gray-500 dark:text-gray-400">{{ post.timestamp }}</p>
                 </div>
-                <div class="flex space-x-4">
-                  <button @click="likePost(post)" class="text-sky-500 hover:underline">{{ post.likes }} Likes</button>
-                  <button @click="repostPost(post)" class="text-gray-500 dark:text-gray-400 hover:underline">Repost</button>
+             
+                <div class="flex space-x-4 items-center justify-center">
+                  <div   class="flex gap-2 text-primary items-center">
+                  
+                    <UIcon @click="likePost(post)"  name="i-heroicons-heart"  />
+                    <span>{{ post.likes }} </span>
+                   
+                  </div>
+                  <div   class="flex gap-2 text-primary items-center">
+                    <UIcon @click="repostPost(post)" name="i-heroicons-arrow-path-rounded-square" class="h-5 w-5" />
+                    <span>{{ post.reposts }}</span>
+                  </div>
+                  
+     
                 </div>
               </div>
               <p class="mt-4 text-gray-900 dark:text-gray-100">{{ post.content }}</p>
@@ -83,6 +94,7 @@
       timestamp: '2 hours ago',
       content: 'Hey everyone! I am currently looking for a job in web development. Any advice or leads would be greatly appreciated!',
       likes: 10,
+      reposts: 5,
       comments: [
         {
           id: 1,
@@ -104,6 +116,7 @@
       timestamp: '5 hours ago',
       content: 'I just completed a new project on GitHub. It’s a Vue.js app for tracking expenses. Would love to get some feedback!',
       likes: 25,
+      reposts: 12,
       comments: [
         {
           id: 2,
@@ -141,6 +154,7 @@
         timestamp: 'Just now',
         content: newPostContent.value,
         likes: 0,
+        reposts: 0,
         comments: []
       });
       newPostContent.value = '';
