@@ -5,6 +5,7 @@
   
       <div class="p-4  rounded-lg shadow-2xl ">
         <h1 class="text-2xl font-bold mb-4">{{ job.title }}</h1>
+        <img :src="job.company.logoUrl" alt="Company Logo" class="mb-4 rounded-full">
         <p><strong>Company:</strong> {{ job.company.name }}</p>
         <p><strong>Description:</strong> {{ job.description }}</p>
         <p><strong>Work Style:</strong> {{ job.workStyle }}</p>
